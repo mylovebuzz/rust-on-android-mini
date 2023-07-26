@@ -2,7 +2,7 @@ use rand::Rng;
 use jni::JNIEnv;
 
 #[cfg(target_os="android")]
-pub extern "system" fn Java_cn_com_sony_rustonandroid_MainActivity_doSth<'local>(
+pub extern "system" fn Java_cn_com_company_rustonandroid_MainActivity_doSth<'local>(
     mut env: JNIEnv<'local>, _: JClass<'local>, input: JString<'local>) -> jstring {
 
 
