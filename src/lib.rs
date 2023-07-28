@@ -5,10 +5,11 @@ use jni::JNIEnv;
 pub extern "system" fn Java_cn_com_company_rustonandroid_MainActivity_doSth<'local>(
     mut env: JNIEnv<'local>, _: JClass<'local>, input: JString<'local>) -> jstring {
 
-
+    let java_string2rust_string: String = env.get_string(&input)
+        .expect("could not get java string from kotlin").into();
     let num = rand::thread_rng().gen_range(1000..9999);
-
-
+    let output = env.new_string(format!("{}: {}",
+        java_string2rust_string, num).expect("could not create java string");
     output.into_raw()
 }
 /*
