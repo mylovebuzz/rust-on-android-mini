@@ -1,9 +1,11 @@
 use rand::Rng;
 use jni::JNIEnv;
+use jni::objects::{JClass, JString};
+use jni::sys::{jstring};
 
 #[cfg(target_os="android")]
 pub extern "system" fn Java_cn_com_company_rustonandroid_MainActivity_doSth<'local>(
-    mut env: JNIEnv<'local>, _: JClass<'local>, input: JString<'local>) -> jstring {
+    env: JNIEnv<'local>, _: JClass<'local>, input: JString<'local>) -> jstring {
 
     let java_string2rust_string: String = env.get_string(&input)
         .expect("could not get java string from kotlin").into();
